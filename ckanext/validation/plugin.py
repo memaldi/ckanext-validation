@@ -1,10 +1,14 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+import uuid
+import ckan.model
+from ckan.lib.celery_app import celery
 
 
 class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IDatasetForm)
     plugins.implements(plugins.IConfigurer)
+    plugins.implements(plugins.IMapper)
 
     # IConfigurer
 
@@ -46,3 +50,25 @@ class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         # This plugin doesn't handle any special package types, it just
         # registers itself as the default (above).
         return []
+
+    def launch_validation_task(self, mapper, connection, instance):
+        if type(instance) is ckan.model.resource.Resource:
+            celery.send_task("validation.validate", args=[instance.id], task_id=str(uuid.uuid4()))
+
+    def after_update(self, mapper, connection, instance):
+        self.launch_validation_task(mapper, connection, instance)
+
+    def after_insert(self, mapper, connection, instance):
+        self.launch_validation_task(mapper, connection, instance)
+
+    def after_delete(self, mapper, connection, instance):
+        pass
+
+    def before_insert(self, mapper, connection, instance):
+        pass
+
+    def before_update(self, mapper, connection, instance):
+        pass
+
+    def before_delete(self, mapper, connection, instance):
+        pass

@@ -79,5 +79,7 @@ setup(
     entry_points='''
         [ckan.plugins]
         validation=ckanext.validation.plugin:ValidationPlugin
+        [ckan.celery_task]
+        tasks = ckanext.validation.celery_import:task_imports
     ''',
 )
