@@ -42,7 +42,10 @@ class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
                 'validated' : [ toolkit.get_validator('ignore_missing') ]
                 })
         schema['resources'].update({
-                'validation_timestamp' : [ toolkit.get_validator('ignore_missing') ]
+                'update_timestamp' : [ toolkit.get_validator('ignore_missing') ]
+                })
+        schema['resources'].update({
+                'validation_time' : [ toolkit.get_validator('ignore_missing') ]
                 })
         return schema
 

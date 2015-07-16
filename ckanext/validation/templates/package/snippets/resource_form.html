@@ -10,4 +10,12 @@
         <textarea name="validation" id="field-validation" placeholder="Validation schema" cols="20" rows="5">{{data.validation}}</textarea>
     </div>
   </div>
+  <input type="hidden" value="" id="update_timestamp" name="update_timestamp">
+  <input type="hidden" value="{{data.validation_time}}" id="validation_time" name="validation_time">
+
+  <script>
+    date = new Date();
+    document.getElementById("update_timestamp").value = date.getTime();
+  </script>
+
 {% endblock %}
