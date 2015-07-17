@@ -9,6 +9,7 @@ import urlparse
 from datetime import timedelta, datetime
 from celery.decorators import periodic_task
 import dateutil.parser
+from lxml import etree
 
 config = ConfigParser.ConfigParser()
 config.read(os.environ['CKAN_CONFIG'])
@@ -21,6 +22,18 @@ API_URL = urlparse.urljoin(SITE_URL, 'api/3/')
 API_KEY = config.get(PLUGIN_SECTION, 'api_key')
 
 JSON_FORMAT = ['json', 'application/json']
+XML_FORMAT = ['xml', 'application/xml', 'text/xml']
+
+def validate_xml(validation, url):
+    r = requests.get(url)
+    schema_root = etree.XML(validation)
+    schema = etree.XMLSchema(schema_root)
+    parser = etree.XMLParser(schema = schema)
+    try:
+        root = etree.fromstring(r.content, parser)
+        return True
+    except etree.XMLSyntaxError:
+        return False
 
 def validate_json(validation, url):
     r = requests.get(url)
@@ -41,7 +54,6 @@ def validate():
     package_list = res.json()['result']
 
     for package in package_list:
-        print package
         res = requests.post(
             API_URL + 'action/package_show', json.dumps({'id': package}),
             headers = {'Authorization': API_KEY,
@@ -51,22 +63,27 @@ def validate():
         if 'resources' in package['result']:
             for resource in package['result']['resources']:
                 # TODO: Check format!!!
-                last = None
-                last_validation = datetime(1970, 01, 01)
-                if resource['update_timestamp'] == None:
-                    last = dateutil.parser.parse(resource['created'])
-                else:
-                    last_datetime = datetime.fromtimestamp(float(resource['update_timestamp']) / 1000.0)
-                    last = dateutil.parser.parse(str(last_datetime))
-                if 'validation_time' in resource:
-                    last_validation = dateutil.parser.parse(resource['validation_time'])
+                if resource['format'].lower() in JSON_FORMAT or resource['format'].lower() in XML_FORMAT:
+                    last = None
+                    last_validation = datetime(1970, 01, 01)
+                    if resource['update_timestamp'] == None:
+                        last = dateutil.parser.parse(resource['created'])
+                    else:
+                        last_datetime = datetime.fromtimestamp(float(resource['update_timestamp']) / 1000.0)
+                        last = dateutil.parser.parse(str(last_datetime))
+                    if 'validation_time' in resource:
+                        last_validation = dateutil.parser.parse(resource['validation_time'])
 
-                if (last > last_validation) and ('validation' in resource):
-                    validation = validate_json(resource['validation'], resource['url'])
-                    resource['validated'] = validation
-                    resource['validation_time'] = str(datetime.now())
-                    res = requests.post(
-                        API_URL + 'action/resource_update', json.dumps(resource),
-                        headers = {'Authorization': API_KEY,
-                                   'Content-Type': 'application/json'}
-                    )
+                    if (last > last_validation) and ('validation' in resource):
+                        validation = False
+                        if resource['format'].lower() in JSON_FORMAT:
+                            validation = validate_json(resource['validation'], resource['url'])
+                        elif resource['format'].lower() in XML_FORMAT:
+                            validation = validate_xml(resource['validation'], resource['url'])
+                        resource['validated'] = validation
+                        resource['validation_time'] = str(datetime.now())
+                        res = requests.post(
+                            API_URL + 'action/resource_update', json.dumps(resource),
+                            headers = {'Authorization': API_KEY,
+                                       'Content-Type': 'application/json'}
+                        )

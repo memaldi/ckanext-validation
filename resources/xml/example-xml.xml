@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rows num="42" xmlns="http://foo/bar.xsd">
+    <row num="1">
+        <cod_msc>1.746</cod_msc>
+        <cod_ccaa>CPV01008C</cod_ccaa>
+        <cod_eurost>ES21100008C01008C</cod_eurost>
+        <denominaci>EMBALSE ULLIBARRI GAMBOA-LANDA</denominaci>
+        <eustat>1.008</eustat>
+        <municipio>Arratzua-Ubarrundia</municipio>
+        <mun_prov>1</mun_prov>
+        <territorio>ARABA</territorio>
+        <url_ficha>Landa.pdf</url_ficha>
+        <x_utm>533.563</x_utm>
+        <y_utm>4.755.713</y_utm>
+    </row>
+    <row num="2">
+        <cod_msc>1.746</cod_msc>
+        <cod_ccaa>CPV01008C</cod_ccaa>
+        <cod_eurost>ES21100008C01008C</cod_eurost>
+        <denominaci>EMBALSE ULLIBARRI GAMBOA-LANDA</denominaci>
+        <eustat>1.008</eustat>
+        <municipio>Arratzua-Ubarrundia</municipio>
+        <mun_prov>1</mun_prov>
+        <territorio>ARABA</territorio>
+        <url_ficha>Landa.pdf</url_ficha>
+        <x_utm>533.612</x_utm>
+        <y_utm>4.755.453</y_utm>
+    </row>
+    <row num="3">
+        <cod_msc>1.619</cod_msc>
+        <cod_ccaa>CPV01008B</cod_ccaa>
+        <cod_eurost>ES21100008C01008B</cod_eurost>
+        <denominaci>EMBALSE ULLIBARRI GAMBOA-ISLA ZUHATZA IRLA</denominaci>
+        <eustat>1.008</eustat>
+        <municipio>Arratzua-Ubarrundia</municipio>
+        <mun_prov>1</mun_prov>
+        <territorio>ARABA</territorio>
+        <url_ficha>zuatza-irla.pdf</url_ficha>
+        <x_utm>533.257</x_utm>
+        <y_utm>4.753.213</y_utm>
+    </row>
+    <row num="4">
+        <cod_msc>1.748</cod_msc>
+        <cod_ccaa>CPV01013B</cod_ccaa>
+        <cod_eurost>ES21100013C01013B</cod_eurost>
+        <denominaci>EMBALSE ULLIBARRI GAMBOA-GARAIO</denominaci>
+        <eustat>1.013</eustat>
+        <municipio>Barrundia</municipio>
+        <mun_prov>1</mun_prov>
+        <territorio>ARABA</territorio>
+        <url_ficha>garaio.pdf</url_ficha>
+        <x_utm>537.329</x_utm>
+        <y_utm>4.750.736</y_utm>
+    </row>
+    <row num="5">
+        <cod_msc>1.748</cod_msc>
+        <cod_ccaa>CPV01013B</cod_ccaa>
+        <cod_eurost>ES21100013C01013B</cod_eurost>
+        <denominaci>EMBALSE ULLIBARRI GAMBOA-GARAIO</denominaci>
+        <eustat>1.013</eustat>
+        <municipio>Barrundia</municipio>
+        <mun_prov>1</mun_prov>
+        <territorio>ARABA</territorio>
+        <url_ficha>garaio.pdf</url_ficha>
+        <x_utm>537.039</x_utm>
+        <y_utm>4.750.091</y_utm>
+    </row>
+    <row num="6">
+        <cod_msc>530</cod_msc>
+        <cod_ccaa>MPV20061A</cod_ccaa>
+        <cod_eurost>ES21200061M20061A</cod_eurost>
+        <denominaci>PLAYA DE ANTILLA</denominaci>
+        <eustat>20.061</eustat>
+        <municipio>Orio</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Antilla.pdf</url_ficha>
+        <x_utm>570.724</x_utm>
+        <y_utm>4.793.299</y_utm>
+    </row>
+    <row num="7">
+        <cod_msc>540</cod_msc>
+        <cod_ccaa>MPV48017A</cod_ccaa>
+        <cod_eurost>ES21300017M48017A</cod_eurost>
+        <denominaci>PLAYA DE ARITZATXU</denominaci>
+        <eustat>48.017</eustat>
+        <municipio>Bermeo</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Aritzatxu.pdf</url_ficha>
+        <x_utm>521.889</x_utm>
+        <y_utm>4.808.149</y_utm>
+    </row>
+    <row num="8">
+        <cod_msc>2.036</cod_msc>
+        <cod_ccaa>MPV48056A</cod_ccaa>
+        <cod_eurost>ES21300056M48056A</cod_eurost>
+        <denominaci>PLAYA DE ARMINTZA</denominaci>
+        <eustat>48.056</eustat>
+        <municipio>Lemoiz</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>508.700</url_ficha>
+        <x_utm>4.808.870</x_utm>
+        <y_utm/>
+    </row>
+    <row num="9">
+        <cod_msc>557</cod_msc>
+        <cod_ccaa>MPV48085B</cod_ccaa>
+        <cod_eurost>ES21300085M48085B</cod_eurost>
+        <denominaci>PLAYA DE ARRIATERA-ATXABIRIBIL</denominaci>
+        <eustat>48.085</eustat>
+        <municipio>Sopelana</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Arriatera-Atxabiribil.pdf</url_ficha>
+        <x_utm>500.281</x_utm>
+        <y_utm>4.803.977</y_utm>
+    </row>
+    <row num="10">
+        <cod_msc>552</cod_msc>
+        <cod_ccaa>MPV48073A</cod_ccaa>
+        <cod_eurost>ES21300073M48073A</cod_eurost>
+        <denominaci>PLAYA DE ARRIGORRI</denominaci>
+        <eustat>48.073</eustat>
+        <municipio>Ondarroa</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Arrigorri.pdf</url_ficha>
+        <x_utm>547.205</x_utm>
+        <y_utm>4.796.895</y_utm>
+    </row>
+    <row num="11">
+        <cod_msc>544</cod_msc>
+        <cod_ccaa>MPV48044C</cod_ccaa>
+        <cod_eurost>ES21300044M48044C</cod_eurost>
+        <denominaci>PLAYA DE ARRIGUNAGA</denominaci>
+        <eustat>48.044</eustat>
+        <municipio>Getxo</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Arrigunaga.pdf</url_ficha>
+        <x_utm>498.388</x_utm>
+        <y_utm>4.800.315</y_utm>
+    </row>
+    <row num="12">
+        <cod_msc>543</cod_msc>
+        <cod_ccaa>MPV48044B</cod_ccaa>
+        <cod_eurost>ES21300044M48044B</cod_eurost>
+        <denominaci>PLAYA DE AZKORRI (GORRONDATXE)</denominaci>
+        <eustat>48.044</eustat>
+        <municipio>Getxo</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Azkorri-Gorrondatxe.pdf</url_ficha>
+        <x_utm>498.674</x_utm>
+        <y_utm>4.803.099</y_utm>
+    </row>
+    <row num="13">
+        <cod_msc>539</cod_msc>
+        <cod_ccaa>MPV48012A</cod_ccaa>
+        <cod_eurost>ES21300012M48012A</cod_eurost>
+        <denominaci>PLAYA DE BAKIO</denominaci>
+        <eustat>48.012</eustat>
+        <municipio>Bakio</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Bakio.pdf</url_ficha>
+        <x_utm>515.589</x_utm>
+        <y_utm>4.808.691</y_utm>
+    </row>
+    <row num="14">
+        <cod_msc>556</cod_msc>
+        <cod_ccaa>MPV48085A</cod_ccaa>
+        <cod_eurost>ES21300085M48085A</cod_eurost>
+        <denominaci>PLAYA DE BARINATXE (SOLANDOTES)</denominaci>
+        <eustat>48.085</eustat>
+        <municipio>Sopelana</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Barinatxe-Solandotes.pdf</url_ficha>
+        <x_utm>499.546</x_utm>
+        <y_utm>4.803.507</y_utm>
+    </row>
+    <row num="15">
+        <cod_msc>523</cod_msc>
+        <cod_ccaa>MPV20029A</cod_ccaa>
+        <cod_eurost>ES21200029M20029A</cod_eurost>
+        <denominaci>PLAYA DE DEBA</denominaci>
+        <eustat>20.029</eustat>
+        <municipio>Deba</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Deba.pdf</url_ficha>
+        <x_utm>552.483</x_utm>
+        <y_utm>4.794.158</y_utm>
+    </row>
+    <row num="16">
+        <cod_msc>545</cod_msc>
+        <cod_ccaa>MPV48028A</cod_ccaa>
+        <cod_eurost>ES21300048M48028A</cod_eurost>
+        <denominaci>PLAYA DE EA</denominaci>
+        <eustat>48.028</eustat>
+        <municipio>Ea</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Ea.pdf</url_ficha>
+        <x_utm>533.804</x_utm>
+        <y_utm>4.803.745</y_utm>
+    </row>
+    <row num="17">
+        <cod_msc>542</cod_msc>
+        <cod_ccaa>MPV48044A</cod_ccaa>
+        <cod_eurost>ES21300044M48044A</cod_eurost>
+        <denominaci>PLAYA DE EREAGA</denominaci>
+        <eustat>48.044</eustat>
+        <municipio>Getxo</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Ereaga.pdf</url_ficha>
+        <x_utm>498.840</x_utm>
+        <y_utm>4.798.864</y_utm>
+    </row>
+    <row num="18">
+        <cod_msc>526</cod_msc>
+        <cod_ccaa>MPV20039B</cod_ccaa>
+        <cod_eurost>ES21200039M20039B</cod_eurost>
+        <denominaci>PLAYA DE GAZTETAPE</denominaci>
+        <eustat>20.039</eustat>
+        <municipio>Getaria</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Gaztetape.pdf</url_ficha>
+        <x_utm>564.393</x_utm>
+        <y_utm>4.794.868</y_utm>
+    </row>
+    <row num="19">
+        <cod_msc>541</cod_msc>
+        <cod_ccaa>MPV48043A</cod_ccaa>
+        <cod_eurost>ES21300043M48043A</cod_eurost>
+        <denominaci>PLAYA DE GORLIZ</denominaci>
+        <eustat>48.043</eustat>
+        <municipio>Gorliz</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Gorliz.pdf</url_ficha>
+        <x_utm>504.442</x_utm>
+        <y_utm>4.807.102</y_utm>
+    </row>
+    <row num="20">
+        <cod_msc>532</cod_msc>
+        <cod_ccaa>MPV20069A</cod_ccaa>
+        <cod_eurost>ES21200069M20069A</cod_eurost>
+        <denominaci>PLAYA DE GROS/LA ZURRIOLA</denominaci>
+        <eustat>20.069</eustat>
+        <municipio>Donostia / San Sebastián</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Gros-La_Zurriola.pdf</url_ficha>
+        <x_utm>583.046</x_utm>
+        <y_utm>4.797.608</y_utm>
+    </row>
+    <row num="21">
+        <cod_msc>524</cod_msc>
+        <cod_ccaa>MPV20036A</cod_ccaa>
+        <cod_eurost>ES21200036M20036A</cod_eurost>
+        <denominaci>PLAYA DE HONDARRIBIA</denominaci>
+        <eustat>20.036</eustat>
+        <municipio>Hondarribia</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Hondarribia.pdf</url_ficha>
+        <x_utm>597.658</x_utm>
+        <y_utm>4.803.707</y_utm>
+    </row>
+    <row num="22">
+        <cod_msc>549</cod_msc>
+        <cod_ccaa>MPV48057A</cod_ccaa>
+        <cod_eurost>ES21300057M48057A</cod_eurost>
+        <denominaci>PLAYA DE ISUNTZA</denominaci>
+        <eustat>48.057</eustat>
+        <municipio>Lekeitio</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Isuntza.pdf</url_ficha>
+        <x_utm>540.477</x_utm>
+        <y_utm>4.801.278</y_utm>
+    </row>
+    <row num="23">
+        <cod_msc>537</cod_msc>
+        <cod_ccaa>MPV20081B</cod_ccaa>
+        <cod_eurost>ES21200081M20081B</cod_eurost>
+        <denominaci>PLAYA DE ITZURUN</denominaci>
+        <eustat>20.081</eustat>
+        <municipio>Zumaia</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Itzurun.pdf</url_ficha>
+        <x_utm>559.939</x_utm>
+        <y_utm>4.794.440</y_utm>
+    </row>
+    <row num="24">
+        <cod_msc>550</cod_msc>
+        <cod_ccaa>MPV48063A</cod_ccaa>
+        <cod_eurost>ES21300063M48063A</cod_eurost>
+        <denominaci>PLAYA DE KARRASPIO</denominaci>
+        <eustat>48.063</eustat>
+        <municipio>Mendexa</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Karraspio.pdf</url_ficha>
+        <x_utm>540.997</x_utm>
+        <y_utm>4.801.301</y_utm>
+    </row>
+    <row num="25">
+        <cod_msc>533</cod_msc>
+        <cod_ccaa>MPV20069B</cod_ccaa>
+        <cod_eurost>ES21200069M20069B</cod_eurost>
+        <denominaci>PLAYA DE LA CONCHA</denominaci>
+        <eustat>20.069</eustat>
+        <municipio>Donostia / San Sebastián</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>La_Concha.pdf</url_ficha>
+        <x_utm>581.879</x_utm>
+        <y_utm>4.796.445</y_utm>
+    </row>
+    <row num="26">
+        <cod_msc>547</cod_msc>
+        <cod_ccaa>MPV48048B</cod_ccaa>
+        <cod_eurost>ES21300048M48048B</cod_eurost>
+        <denominaci>PLAYA DE LAGA</denominaci>
+        <eustat>48.048</eustat>
+        <municipio>Ibarrangelu</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Laga.pdf</url_ficha>
+        <x_utm>527.487</x_utm>
+        <y_utm>4.806.378</y_utm>
+    </row>
+    <row num="27">
+        <cod_msc>546</cod_msc>
+        <cod_ccaa>MPV48048A</cod_ccaa>
+        <cod_eurost>ES21300048M48048A</cod_eurost>
+        <denominaci>PLAYA DE LAIDA</denominaci>
+        <eustat>48.048</eustat>
+        <municipio>Ibarrangelu</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Laida.pdf</url_ficha>
+        <x_utm>525.272</x_utm>
+        <y_utm>4.805.822</y_utm>
+    </row>
+    <row num="28">
+        <cod_msc>551</cod_msc>
+        <cod_ccaa>MPV48068A</cod_ccaa>
+        <cod_eurost>ES21300068M48068A</cod_eurost>
+        <denominaci>PLAYA DE LAIDATXU</denominaci>
+        <eustat>48.068</eustat>
+        <municipio>Mundaka</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Laidatxu.pdf</url_ficha>
+        <x_utm>524.507</x_utm>
+        <y_utm>4.805.776</y_utm>
+    </row>
+    <row num="29">
+        <cod_msc>1.775</cod_msc>
+        <cod_ccaa>MPV48044D</cod_ccaa>
+        <cod_eurost>ES21300044M48044D</cod_eurost>
+        <denominaci>PLAYA DE LAS ARENAS</denominaci>
+        <eustat>48.044</eustat>
+        <municipio>Getxo</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Las_Arenas.pdf</url_ficha>
+        <x_utm>498.540</x_utm>
+        <y_utm>4.797.123</y_utm>
+    </row>
+    <row num="30">
+        <cod_msc>525</cod_msc>
+        <cod_ccaa>MPV20039A</cod_ccaa>
+        <cod_eurost>ES21200039M20039A</cod_eurost>
+        <denominaci>PLAYA DE MALKORBE</denominaci>
+        <eustat>20.039</eustat>
+        <municipio>Getaria</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Malkorbe.pdf</url_ficha>
+        <x_utm>564.714</x_utm>
+        <y_utm>4.794.773</y_utm>
+    </row>
+    <row num="31">
+        <cod_msc>2.035</cod_msc>
+        <cod_ccaa>MPV48014A</cod_ccaa>
+        <cod_eurost>ES21300014M48014A</cod_eurost>
+        <denominaci>PLAYA DE MURIOLA</denominaci>
+        <eustat>48.014</eustat>
+        <municipio>Barrika</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>503.270</url_ficha>
+        <x_utm>4.806.690</x_utm>
+        <y_utm/>
+    </row>
+    <row num="32">
+        <cod_msc>528</cod_msc>
+        <cod_ccaa>MPV20056B</cod_ccaa>
+        <cod_eurost>ES21200056M20056B</cod_eurost>
+        <denominaci>PLAYA DE MUTRIKU</denominaci>
+        <eustat>20.056</eustat>
+        <municipio>Mutriku</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Mutriku.pdf</url_ficha>
+        <x_utm>550.357</x_utm>
+        <y_utm>4.795.643</y_utm>
+    </row>
+    <row num="33">
+        <cod_msc>548</cod_msc>
+        <cod_ccaa>MPV48049A</cod_ccaa>
+        <cod_eurost>ES21300049M48049A</cod_eurost>
+        <denominaci>PLAYA DE OGELLA</denominaci>
+        <eustat>48.049</eustat>
+        <municipio>Ispaster</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Ogella.pdf</url_ficha>
+        <x_utm>536.852</x_utm>
+        <y_utm>4.802.376</y_utm>
+    </row>
+    <row num="34">
+        <cod_msc>527</cod_msc>
+        <cod_ccaa>MPV20056A</cod_ccaa>
+        <cod_eurost>ES21200056M20056A</cod_eurost>
+        <denominaci>PLAYA DE ONDARBELTZ</denominaci>
+        <eustat>20.056</eustat>
+        <municipio>Mutriku</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Ondarbeltz.pdf</url_ficha>
+        <x_utm>552.238</x_utm>
+        <y_utm>4.794.388</y_utm>
+    </row>
+    <row num="35">
+        <cod_msc>534</cod_msc>
+        <cod_ccaa>MPV20069C</cod_ccaa>
+        <cod_eurost>ES21200069M20069C</cod_eurost>
+        <denominaci>PLAYA DE ONDARRETA</denominaci>
+        <eustat>20.069</eustat>
+        <municipio>Donostia / San Sebastián</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Ondarreta.pdf</url_ficha>
+        <x_utm>580.977</x_utm>
+        <y_utm>4.796.533</y_utm>
+    </row>
+    <row num="36">
+        <cod_msc>555</cod_msc>
+        <cod_ccaa>MPV48077A</cod_ccaa>
+        <cod_eurost>ES21300077M48077A</cod_eurost>
+        <denominaci>PLAYA DE PLENTZIA</denominaci>
+        <eustat>48.077</eustat>
+        <municipio>Plentzia</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Plentzia.pdf</url_ficha>
+        <x_utm>504.324</x_utm>
+        <y_utm>4.806.499</y_utm>
+    </row>
+    <row num="37">
+        <cod_msc>553</cod_msc>
+        <cod_ccaa>MPV48076A</cod_ccaa>
+        <cod_eurost>ES21300076M48076A</cod_eurost>
+        <denominaci>PLAYA DE SAN ANTONIO</denominaci>
+        <eustat>48.076</eustat>
+        <municipio>Sukarrieta</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>San_Antonio.pdf</url_ficha>
+        <x_utm>525.276</x_utm>
+        <y_utm>4.803.822</y_utm>
+    </row>
+    <row num="38">
+        <cod_msc>536</cod_msc>
+        <cod_ccaa>MPV20081A</cod_ccaa>
+        <cod_eurost>ES21200081M20081A</cod_eurost>
+        <denominaci>PLAYA DE SANTIAGO</denominaci>
+        <eustat>20.081</eustat>
+        <municipio>Zumaia</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Santiago.pdf</url_ficha>
+        <x_utm>561.144</x_utm>
+        <y_utm>4.794.757</y_utm>
+    </row>
+    <row num="39">
+        <cod_msc>529</cod_msc>
+        <cod_ccaa>MPV20056D</cod_ccaa>
+        <cod_eurost>ES21200056M20056D</cod_eurost>
+        <denominaci>PLAYA DE SATURRARAN</denominaci>
+        <eustat>20.056</eustat>
+        <municipio>Mutriku</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Saturraran.pdf</url_ficha>
+        <x_utm>547.757</x_utm>
+        <y_utm>4.796.697</y_utm>
+    </row>
+    <row num="40">
+        <cod_msc>554</cod_msc>
+        <cod_ccaa>MPV48076B</cod_ccaa>
+        <cod_eurost>ES21300076M48076B</cod_eurost>
+        <denominaci>PLAYA DE TOÑA</denominaci>
+        <eustat>48.076</eustat>
+        <municipio>Sukarrieta</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>Toña.pdf</url_ficha>
+        <x_utm>524.699</x_utm>
+        <y_utm>4.804.571</y_utm>
+    </row>
+    <row num="41">
+        <cod_msc>535</cod_msc>
+        <cod_ccaa>MPV20079A</cod_ccaa>
+        <cod_eurost>ES21200079M20079A</cod_eurost>
+        <denominaci>PLAYA DE ZARAUTZ</denominaci>
+        <eustat>20.079</eustat>
+        <municipio>Zarautz</municipio>
+        <mun_prov>20</mun_prov>
+        <territorio>GIPUZKOA</territorio>
+        <url_ficha>Zarautz.pdf</url_ficha>
+        <x_utm>567.343</x_utm>
+        <y_utm>4.793.158</y_utm>
+    </row>
+    <row num="42">
+        <cod_msc>1.904</cod_msc>
+        <cod_ccaa>MPV48071A</cod_ccaa>
+        <cod_eurost>ES21300071M48071A</cod_eurost>
+        <denominaci>PLAYA LA ARENA - MUSKIZ</denominaci>
+        <eustat>48.071</eustat>
+        <municipio>Muskiz</municipio>
+        <mun_prov>48</mun_prov>
+        <territorio>BIZKAIA</territorio>
+        <url_ficha>La_Arena.pdf</url_ficha>
+        <x_utm>490.489</x_utm>
+        <y_utm>4.799.680</y_utm>
+    </row>
+</rows>
