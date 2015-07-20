@@ -52,3 +52,4 @@ unicodecsv==0.9.4
 vdm==0.13
 wsgiref==0.1.2
 zope.interface==4.1.1
+pip==7.1.0

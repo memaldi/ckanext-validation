@@ -10,6 +10,7 @@ from datetime import timedelta, datetime
 from celery.decorators import periodic_task
 import dateutil.parser
 from lxml import etree
+from tempfile import NamedTemporaryFile
 
 config = ConfigParser.ConfigParser()
 config.read(os.environ['CKAN_CONFIG'])
@@ -20,9 +21,11 @@ PLUGIN_SECTION = 'plugin:validation'
 SITE_URL = config.get(MAIN_SECTION, 'ckan.site_url')
 API_URL = urlparse.urljoin(SITE_URL, 'api/3/')
 API_KEY = config.get(PLUGIN_SECTION, 'api_key')
+WELIVE_API = config.get(PLUGIN_SECTION, 'welive_api')
 
 JSON_FORMAT = ['json', 'application/json']
 XML_FORMAT = ['xml', 'application/xml', 'text/xml']
+CSV_FORMAT = ['csv', 'text/comma-separated-values', 'text/csv', 'application/csv']
 
 def validate_xml(validation, url):
     r = requests.get(url)
@@ -44,6 +47,19 @@ def validate_json(validation, url):
     except jsonschema.ValidationError:
         return False
 
+def validate_csv(validation, url):
+    csv_text = requests.get(url).content
+
+    url = WELIVE_API + 'validation/csv'
+    print url
+    files = {'csv': csv_text, 'schema': validation}
+    r = requests.post(url, files=files)
+    if r.json()['result'] == 'true':
+        return True
+    else:
+        return False
+
+
 @periodic_task(run_every=timedelta(seconds=5))
 def validate():
     res = requests.get(
@@ -63,7 +79,7 @@ def validate():
         if 'resources' in package['result']:
             for resource in package['result']['resources']:
                 # TODO: Check format!!!
-                if resource['format'].lower() in JSON_FORMAT or resource['format'].lower() in XML_FORMAT:
+                if resource['format'].lower() in JSON_FORMAT or resource['format'].lower() in XML_FORMAT or resource['format'].lower() in CSV_FORMAT:
                     last = None
                     last_validation = datetime(1970, 01, 01)
                     if resource['update_timestamp'] == None:
@@ -80,6 +96,8 @@ def validate():
                             validation = validate_json(resource['validation'], resource['url'])
                         elif resource['format'].lower() in XML_FORMAT:
                             validation = validate_xml(resource['validation'], resource['url'])
+                        elif resource['format'].lower() in CSV_FORMAT:
+                            validation = validate_csv(resource['validation'], resource['url'])
                         resource['validated'] = validation
                         resource['validation_time'] = str(datetime.now())
                         res = requests.post(

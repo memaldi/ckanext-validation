@@ -1,0 +1,14 @@
+version 1.0
+@separator ';'
+@totalColumns 11
+COD_MSC: notEmpty
+COD_CCAA: notEmpty
+COD_EUROST: notEmpty
+DENOMINACI: notEmpty
+COD_EUSTAT: notEmpty
+Municipio: notEmpty
+MUN_PROV: notEmpty
+TERRITORIO: is("ARABA") or is("BIZKAIA") or is("GIPUZKOA")
+url_ficha: notEmpty
+X_UTM: notEmpty
+Y_UTM: notEmpty
