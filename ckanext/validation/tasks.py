@@ -36,7 +36,7 @@ def validate_xml(validation, url):
     errors = []
     try:
         root = etree.fromstring(r.content, parser)
-        return True
+        return True, errors
     except etree.XMLSyntaxError as e:
         errors.append(e.message)
         return False, errors
@@ -44,11 +44,13 @@ def validate_xml(validation, url):
 def validate_json(validation, url):
     r = requests.get(url)
     schema_dict = eval(validation)
+    errors = []
     try:
         jsonschema.validate(r.json(), schema_dict)
-        return True
-    except jsonschema.ValidationError:
-        return False
+        return True, errors
+    except jsonschema.ValidationError as e:
+        errors.append(e.message)
+        return False, errors
 
 def validate_csv(validation, url):
     csv_text = requests.get(url).content
@@ -106,7 +108,7 @@ def validate():
                         if resource['format'].lower() in RDF_FORMAT:
                             validation = validate_rdf(resource['url'])
                         elif resource['format'].lower() in JSON_FORMAT and ('validation' in resource):
-                            validation = validate_json(resource['validation'], resource['url'])
+                            validation, errors = validate_json(resource['validation'], resource['url'])
                         elif resource['format'].lower() in XML_FORMAT and ('validation' in resource):
                             validation, errors = validate_xml(resource['validation'], resource['url'])
                         elif resource['format'].lower() in CSV_FORMAT and ('validation' in resource):
