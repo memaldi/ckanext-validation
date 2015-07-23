@@ -26,6 +26,7 @@ WELIVE_API = config.get(PLUGIN_SECTION, 'welive_api')
 JSON_FORMAT = ['json', 'application/json']
 XML_FORMAT = ['xml', 'application/xml', 'text/xml']
 CSV_FORMAT = ['csv', 'text/comma-separated-values', 'text/csv', 'application/csv']
+RDF_FORMAT = ['rdf', 'application/rdf+xml', 'text/plain', 'application/x-turtle', 'text/rdf+n3']
 
 def validate_xml(validation, url):
     r = requests.get(url)
@@ -49,11 +50,20 @@ def validate_json(validation, url):
 
 def validate_csv(validation, url):
     csv_text = requests.get(url).content
-
-    url = WELIVE_API + 'validation/csv'
-    print url
+    api_url = WELIVE_API + 'validation/csv'
     files = {'csv': csv_text, 'schema': validation}
-    r = requests.post(url, files=files)
+    r = requests.post(api_url, files=files)
+    if r.json()['result'] == 'true':
+        return True
+    else:
+        return False
+
+def validate_rdf(url):
+    rdf_text = requests.get(url).content
+    api_url = WELIVE_API + 'validation/rdf'
+    files = {'rdf': rdf_text}
+    r = requests.post(api_url, files=files)
+    print r.text
     if r.json()['result'] == 'true':
         return True
     else:
@@ -79,7 +89,7 @@ def validate():
         if 'resources' in package['result']:
             for resource in package['result']['resources']:
                 # TODO: Check format!!!
-                if resource['format'].lower() in JSON_FORMAT or resource['format'].lower() in XML_FORMAT or resource['format'].lower() in CSV_FORMAT:
+                if resource['format'].lower() in JSON_FORMAT or resource['format'].lower() in XML_FORMAT or resource['format'].lower() in CSV_FORMAT or resource['format'].lower() in RDF_FORMAT:
                     last = None
                     last_validation = datetime(1970, 01, 01)
                     if resource['update_timestamp'] == None:
@@ -90,13 +100,15 @@ def validate():
                     if 'validation_time' in resource:
                         last_validation = dateutil.parser.parse(resource['validation_time'])
 
-                    if (last > last_validation) and ('validation' in resource):
+                    if (last > last_validation):
                         validation = False
-                        if resource['format'].lower() in JSON_FORMAT:
+                        if resource['format'].lower() in RDF_FORMAT:
+                            validation = validate_rdf(resource['url'])
+                        elif resource['format'].lower() in JSON_FORMAT and ('validation' in resource):
                             validation = validate_json(resource['validation'], resource['url'])
-                        elif resource['format'].lower() in XML_FORMAT:
+                        elif resource['format'].lower() in XML_FORMAT and ('validation' in resource):
                             validation = validate_xml(resource['validation'], resource['url'])
-                        elif resource['format'].lower() in CSV_FORMAT:
+                        elif resource['format'].lower() in CSV_FORMAT and ('validation' in resource):
                             validation = validate_csv(resource['validation'], resource['url'])
                         resource['validated'] = validation
                         resource['validation_time'] = str(datetime.now())
