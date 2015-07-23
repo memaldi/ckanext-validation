@@ -2,7 +2,14 @@
 
 {% block resource_item_title %}
   <a class="heading" href="{{ url }}" title="{{ res.name or res.description }}">
-    {{ h.resource_display_name(res) | truncate(50) }} {% if res.validated %}<i class="icon-ok"></i>{% endif %}<span class="format-label" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">{{ res.format }}</span>
+    {{ h.resource_display_name(res) | truncate(50) }} <span class="format-label" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">{{ res.format }}</span>
     {{ h.popular('views', res.tracking_summary.total, min=10) }}
   </a>
+  {% if res.validated == True %}
+    <i class="icon-ok" title="Validation sucess!" style="color:green"></i>
+  {% elif res.validated == False %}
+    <i class="icon-remove" title="Validation failed!" style="color:red"></i>
+  {% else %}
+    <i class="icon-question" title="Validation schema not provided or filetype not supported" style="color:black"></i>
+  {% endif %}
   {% endblock %}
