@@ -36,7 +36,8 @@ def validate_xml(validation, url):
     try:
         root = etree.fromstring(r.content, parser)
         return True
-    except etree.XMLSyntaxError:
+    except etree.XMLSyntaxError as e:
+        print e
         return False
 
 def validate_json(validation, url):
@@ -92,11 +93,10 @@ def validate():
                 if resource['format'].lower() in JSON_FORMAT or resource['format'].lower() in XML_FORMAT or resource['format'].lower() in CSV_FORMAT or resource['format'].lower() in RDF_FORMAT:
                     last = None
                     last_validation = datetime(1970, 01, 01)
-                    if resource['update_timestamp'] == None:
+                    if resource['update_time'] == None:
                         last = dateutil.parser.parse(resource['created'])
                     else:
-                        last_datetime = datetime.fromtimestamp(float(resource['update_timestamp']) / 1000.0)
-                        last = dateutil.parser.parse(str(last_datetime))
+                        last = dateutil.parser.parse(resource['update_time'])
                     if 'validation_time' in resource:
                         last_validation = dateutil.parser.parse(resource['validation_time'])
 
@@ -107,6 +107,8 @@ def validate():
                         elif resource['format'].lower() in JSON_FORMAT and ('validation' in resource):
                             validation = validate_json(resource['validation'], resource['url'])
                         elif resource['format'].lower() in XML_FORMAT and ('validation' in resource):
+                            print last
+                            print last_validation
                             validation = validate_xml(resource['validation'], resource['url'])
                         elif resource['format'].lower() in CSV_FORMAT and ('validation' in resource):
                             validation = validate_csv(resource['validation'], resource['url'])

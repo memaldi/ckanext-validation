@@ -9,6 +9,7 @@ import ConfigParser
 import os
 import json
 import requests
+import datetime
 # import urlparse
 #
 #
@@ -25,7 +26,7 @@ import requests
 class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IDatasetForm)
     plugins.implements(plugins.IConfigurer)
-    #plugins.implements(plugins.IMapper)
+    plugins.implements(plugins.IResourceController)
 
     # IConfigurer
 
@@ -42,10 +43,13 @@ class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
                 'validated' : [ toolkit.get_validator('ignore_missing') ]
                 })
         schema['resources'].update({
-                'update_timestamp' : [ toolkit.get_validator('ignore_missing') ]
+                'update_time' : [ toolkit.get_validator('ignore_missing') ]
                 })
         schema['resources'].update({
                 'validation_time' : [ toolkit.get_validator('ignore_missing') ]
+                })
+        schema['resources'].update({
+                'validation_errors' : [ toolkit.get_validator('ignore_missing') ]
                 })
         return schema
 
@@ -74,24 +78,25 @@ class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         # registers itself as the default (above).
         return []
 
-    # def launch_validation_task(self, mapper, connection, instance):
-    #     if type(instance) is ckan.model.resource.Resource:
-    #         celery.send_task("validation.validate", args=[instance.id], task_id=str(uuid.uuid4()))
-    #
-    # def after_update(self, mapper, connection, instance):
-    #     self.launch_validation_task(mapper, connection, instance)
-    #
-    # def after_insert(self, mapper, connection, instance):
-    #     self.launch_validation_task(mapper, connection, instance)
-    #
-    # def after_delete(self, mapper, connection, instance):
-    #     pass
-    #
-    # def before_insert(self, mapper, connection, instance):
-    #     pass
-    #
-    # def before_update(self, mapper, connection, instance):
-    #     pass
-    #
-    # def before_delete(self, mapper, connection, instance):
-    #     pass
+    def after_update(self, context, resource):
+        pass
+
+    def before_update(self, context, current, resource):
+        if 'for_edit' in context:
+            resource['update_time'] = str(datetime.datetime.now())
+
+    def before_show(self, resource_dict):
+        pass
+
+    def before_create(self, context, resource):
+        if 'for_edit' in context:
+            resource['update_time'] = str(datetime.datetime.now())
+
+    def after_create(self, context, resource):
+        pass
+
+    def before_delete(self, context, resource, resources):
+        pass
+
+    def after_delete(self, context, resources):
+        pass

@@ -3,20 +3,14 @@
 {% block basic_fields %}
 
   {{ super() }}
-
   <div class="control-group control-full">
     <label class="control-label" for="field-validation">{{ _("Validation schema") }}</label>
     <div class="controls">
         <textarea name="validation" id="field-validation" placeholder="Validation schema for JSON, XML and CSV files. RDF files are vallidated against the ontologies." cols="20" rows="5">{{data.validation}}</textarea>
     </div>
   </div>
-  <input type="hidden" value="" id="update_timestamp" name="update_timestamp">
   <input type="hidden" value="{{data.validation_time}}" id="validation_time" name="validation_time">
   <input type="hidden" value="{{data.validated}}" id="validated" name="validated">
-
-  <script>
-    date = new Date();
-    document.getElementById("update_timestamp").value = date.getTime();
-  </script>
+  <input type="hidden" value="{{data.validation_errors}}" id="validation_errors" name="validation_errors">
 
 {% endblock %}
