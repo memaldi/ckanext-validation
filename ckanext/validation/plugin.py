@@ -86,7 +86,7 @@ class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             resource['update_time'] = str(datetime.datetime.now())
 
     def before_show(self, resource_dict):
-        pass
+        resource_dict['validation_errors_dict'] = eval(resource_dict['validation_errors'])
 
     def before_create(self, context, resource):
         if 'for_edit' in context:

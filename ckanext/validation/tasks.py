@@ -33,12 +33,13 @@ def validate_xml(validation, url):
     schema_root = etree.XML(validation)
     schema = etree.XMLSchema(schema_root)
     parser = etree.XMLParser(schema = schema)
+    errors = []
     try:
         root = etree.fromstring(r.content, parser)
         return True
     except etree.XMLSyntaxError as e:
-        print e
-        return False
+        errors.append(e.message)
+        return False, errors
 
 def validate_json(validation, url):
     r = requests.get(url)
@@ -107,13 +108,12 @@ def validate():
                         elif resource['format'].lower() in JSON_FORMAT and ('validation' in resource):
                             validation = validate_json(resource['validation'], resource['url'])
                         elif resource['format'].lower() in XML_FORMAT and ('validation' in resource):
-                            print last
-                            print last_validation
-                            validation = validate_xml(resource['validation'], resource['url'])
+                            validation, errors = validate_xml(resource['validation'], resource['url'])
                         elif resource['format'].lower() in CSV_FORMAT and ('validation' in resource):
                             validation = validate_csv(resource['validation'], resource['url'])
                         resource['validated'] = validation
                         resource['validation_time'] = str(datetime.now())
+                        resource['validation_errors'] = str(errors)
                         res = requests.post(
                             API_URL + 'action/resource_update', json.dumps(resource),
                             headers = {'Authorization': API_KEY,
