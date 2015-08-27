@@ -57,21 +57,23 @@ def validate_csv(validation, url):
     api_url = WELIVE_API + 'validation/csv'
     files = {'csv': csv_text, 'schema': validation}
     r = requests.post(api_url, files=files)
+    errors = r.json()['errors']
     if r.json()['result'] == 'true':
-        return True
+        return True, errors
     else:
-        return False
+        return False, errors
 
 def validate_rdf(url):
     rdf_text = requests.get(url).content
     api_url = WELIVE_API + 'validation/rdf'
     files = {'rdf': rdf_text}
     r = requests.post(api_url, files=files)
-    print r.text
+    errors = r.json()['errors']
+    print errors
     if r.json()['result'] == 'true':
-        return True
+        return True, errors
     else:
-        return False
+        return False, errors
 
 
 @periodic_task(run_every=timedelta(seconds=5))
@@ -102,20 +104,23 @@ def validate():
                         last = dateutil.parser.parse(resource['update_time'])
                     if 'validation_time' in resource:
                         last_validation = dateutil.parser.parse(resource['validation_time'])
-
+                    errors = None
                     if (last > last_validation):
                         validation = False
                         if resource['format'].lower() in RDF_FORMAT:
-                            validation = validate_rdf(resource['url'])
+                            validation, errors = validate_rdf(resource['url'])
                         elif resource['format'].lower() in JSON_FORMAT and ('validation' in resource):
                             validation, errors = validate_json(resource['validation'], resource['url'])
                         elif resource['format'].lower() in XML_FORMAT and ('validation' in resource):
                             validation, errors = validate_xml(resource['validation'], resource['url'])
                         elif resource['format'].lower() in CSV_FORMAT and ('validation' in resource):
-                            validation = validate_csv(resource['validation'], resource['url'])
+                            validation, errors = validate_csv(resource['validation'], resource['url'])
                         resource['validated'] = validation
                         resource['validation_time'] = str(datetime.now())
-                        resource['validation_errors'] = str(errors)
+                        if errors != None:
+                            resource['validation_errors'] = str(errors)
+                        else:
+                            resource['validation_errors'] = ""
                         res = requests.post(
                             API_URL + 'action/resource_update', json.dumps(resource),
                             headers = {'Authorization': API_KEY,
