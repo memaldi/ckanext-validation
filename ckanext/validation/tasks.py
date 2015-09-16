@@ -60,7 +60,9 @@ def validate_csv(validation, url):
     api_url = WELIVE_API + 'validation/csv'
     files = {'csv': csv_text, 'schema': validation}
     r = requests.post(api_url, files=files)
-    errors = r.json()['errors']
+    errors = ''
+    if 'errors' in r.json():
+        errors = r.json()['errors']
     if r.json()['result'] == 'true':
         return True, errors
     else:
@@ -72,7 +74,9 @@ def validate_rdf(url):
     api_url = WELIVE_API + 'validation/rdf'
     files = {'rdf': rdf_text}
     r = requests.post(api_url, files=files)
-    errors = r.json()['errors']
+    errors = ''
+    if 'errors' in r.json():
+        errors = r.json()['errors']
     if r.json()['result'] == 'true':
         return True, errors
     else:
@@ -89,7 +93,7 @@ def validate():
     organization_list = res.json()['result']
     for organization_name in organization_list:
         res = requests.post(
-            API_URL + 'action/organization_show', json.dumps({'id': organization_name}),
+            API_URL + 'action/organization_show', json.dumps({'id': organization_name, 'include_datasets': True}),
             headers = {'Authorization': API_KEY,
                        'Content-Type': 'application/json'}
         )
