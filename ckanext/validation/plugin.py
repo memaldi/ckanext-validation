@@ -89,6 +89,8 @@ class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         if 'validation_errors' in resource_dict:
             if resource_dict['validation_errors'] != "":
                 resource_dict['validation_errors_dict'] = eval(resource_dict['validation_errors'])
+            else:
+                resource_dict['validation_errors_dict'] = None
 
     def before_create(self, context, resource):
         resource['update_time'] = str(datetime.datetime.now())
