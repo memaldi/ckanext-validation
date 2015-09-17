@@ -109,10 +109,10 @@ def validate():
                 if 'resources' in package.json()['result']:
                     for resource in package.json()['result']['resources']:
                         # TODO: Check format!!!
-                        if resource['format'].lower() in JSON_FORMAT or resource['format'].lower() in XML_FORMAT or resource['format'].lower() in CSV_FORMAT or resource['format'].lower() in RDF_FORMAT:
+                        if (resource['format'].lower() in JSON_FORMAT or resource['format'].lower() in XML_FORMAT or resource['format'].lower() in CSV_FORMAT or resource['format'].lower() in RDF_FORMAT) and resource.get('validation', '') != '':
                             last = None
                             last_validation = datetime(1970, 01, 01)
-                            if resource['update_time'] == None:
+                            if resource.get('update_time', None) == None:
                                 last = dateutil.parser.parse(resource['created'])
                             else:
                                 last = dateutil.parser.parse(resource['update_time'])
@@ -140,3 +140,12 @@ def validate():
                                     headers = {'Authorization': API_KEY,
                                                'Content-Type': 'application/json'}
                                 )
+                        else:
+                            if 'validated' in resource:
+                                if resource['validated'] is not None:
+                                    resource['validated'] = None
+                                    res = requests.post(
+                                        API_URL + 'action/resource_update', json.dumps(resource),
+                                        headers = {'Authorization': API_KEY,
+                                                   'Content-Type': 'application/json'}
+                                    )

@@ -24,7 +24,7 @@ anyjson==0.3.3
 argparse==1.2.1
 billiard==3.3.0.20
 celery==3.1.18
--e git+https://github.com/ckan/ckan.git@ckan-2.3#egg=ckan-ckan-2.3
+-e git+https://github.com/ckan/ckan.git@ckan-2.4#egg=ckan-ckan-2.4
 -e git+https://github.com/memaldi/ckanext-validation@master#egg=ckanext-validation-master
 decorator==3.4.0
 fanstatic==0.12
