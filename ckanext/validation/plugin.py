@@ -10,18 +10,7 @@ import os
 import json
 import requests
 import datetime
-# import urlparse
-#
-#
-# config = ConfigParser.ConfigParser()
-# config.read(os.environ['CKAN_CONFIG'])
-#
-# MAIN_SECTION = 'app:main'
-# PLUGIN_SECTION = 'plugin:validation'
-#
-# SITE_URL = config.get(MAIN_SECTION, 'ckan.site_url')
-# API_URL = urlparse.urljoin(SITE_URL, 'api/3/')
-# API_KEY = config.get(PLUGIN_SECTION, 'api_key')
+
 
 class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IDatasetForm)
@@ -36,21 +25,21 @@ class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         toolkit.add_resource('fanstatic', 'validation')
 
     def _modify_package_schema(self, schema):
-        schema['resources'].update({
-                'validation' : [ toolkit.get_validator('ignore_missing') ]
-                })
-        schema['resources'].update({
-                'validated' : [ toolkit.get_validator('ignore_missing') ]
-                })
-        schema['resources'].update({
-                'update_time' : [ toolkit.get_validator('ignore_missing') ]
-                })
-        schema['resources'].update({
-                'validation_time' : [ toolkit.get_validator('ignore_missing') ]
-                })
-        schema['resources'].update({
-                'validation_errors' : [ toolkit.get_validator('ignore_missing') ]
-                })
+        schema['resources'].update(
+            {'validation': [toolkit.get_validator('ignore_missing')]}
+        )
+        schema['resources'].update(
+            {'validated': [toolkit.get_validator('ignore_missing')]}
+        )
+        schema['resources'].update(
+            {'update_time': [toolkit.get_validator('ignore_missing')]}
+        )
+        schema['resources'].update(
+            {'validation_time': [toolkit.get_validator('ignore_missing')]}
+        )
+        schema['resources'].update(
+            {'validation_errors': [toolkit.get_validator('ignore_missing')]}
+        )
         return schema
 
     def create_package_schema(self):
@@ -88,7 +77,8 @@ class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def before_show(self, resource_dict):
         if 'validation_errors' in resource_dict:
             if resource_dict['validation_errors'] != "":
-                resource_dict['validation_errors_dict'] = eval(resource_dict['validation_errors'])
+                resource_dict['validation_errors_dict'] =
+                eval(resource_dict['validation_errors'])
             else:
                 resource_dict['validation_errors_dict'] = None
 
