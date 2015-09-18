@@ -1,14 +1,5 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-import uuid
-import ckan.model
-from ckan.lib.celery_app import celery
-from ckan.lib.base import model
-from ckan.model.resource import Resource
-import ConfigParser
-import os
-import json
-import requests
 import datetime
 
 

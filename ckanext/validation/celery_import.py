@@ -1,2 +1,2 @@
 def task_imports():
-  return ['ckanext.validation.tasks']
+    return ['ckanext.validation.tasks']

@@ -1,7 +1,5 @@
-import pylons
 import ConfigParser
 import os
-from ckan.lib.celery_app import celery
 import jsonschema
 import json
 import requests
@@ -10,7 +8,6 @@ from datetime import timedelta, datetime
 from celery.decorators import periodic_task
 import dateutil.parser
 from lxml import etree
-from tempfile import NamedTemporaryFile
 
 config = ConfigParser.ConfigParser()
 config.read(os.environ['CKAN_CONFIG'])
@@ -39,7 +36,7 @@ def validate_xml(validation, url):
     parser = etree.XMLParser(schema=schema)
     errors = []
     try:
-        root = etree.fromstring(r.content, parser)
+        etree.fromstring(r.content, parser)
         return True, errors
     except etree.XMLSyntaxError as e:
         errors.append(e.message)
@@ -117,46 +114,53 @@ def validate():
                 if 'resources' in package.json()['result']:
                     for resource in package.json()['result']['resources']:
                         # TODO: Check format!!!
-                        if (resource['format'].lower() in JSON_FORMAT or
+                        if ((resource['format'].lower() in JSON_FORMAT or
                             resource['format'].lower() in XML_FORMAT or
                             resource['format'].lower() in CSV_FORMAT or
-                            resource['format'].lower() in RDF_FORMAT)
-                        and resource.get('validation', '') != '':
+                            resource['format'].lower() in RDF_FORMAT) and
+                                resource.get('validation', '') != ''):
                             last = None
                             last_validation = datetime(1970, 01, 01)
                             if resource.get('update_time', None) is None:
-                                last = dateutil.parser
-                                .parse(resource['created'])
+                                last = dateutil.parser.parse(
+                                    resource['created']
+                                )
                             else:
-                                last = dateutil.parser
-                                .parse(resource['update_time'])
+                                last = dateutil.parser.parse(
+                                    resource['update_time']
+                                )
                             if 'validation_time' in resource:
-                                last_validation = dateutil.parser
-                                .parse(resource['validation_time'])
+                                last_validation = dateutil.parser.parse(
+                                    resource['validation_time']
+                                )
                             errors = None
                             if (last > last_validation):
                                 validation = False
                                 if resource['format'].lower() in RDF_FORMAT:
-                                    validation, errors =
-                                    validate_rdf(resource['url'])
-                                elif resource['format'].lower() in JSON_FORMAT
-                                and ('validation' in resource):
-                                    validation, errors =
-                                    validate_json(resource['validation'],
-                                                  resource['url'])
-                                elif resource['format'].lower() in XML_FORMAT
-                                and ('validation' in resource):
-                                    validation, errors =
-                                    validate_xml(resource['validation'],
-                                                 resource['url'])
-                                elif resource['format'].lower() in CSV_FORMAT
-                                and ('validation' in resource):
-                                    validation, errors =
-                                    validate_csv(resource['validation'],
-                                                 resource['url'])
+                                    validation, errors = validate_rdf(
+                                        resource['url']
+                                    )
+                                elif (resource['format'].lower() in JSON_FORMAT
+                                        and ('validation' in resource)):
+                                    validation, errors = validate_json(
+                                        resource['validation'],
+                                        resource['url']
+                                    )
+                                elif (resource['format'].lower() in XML_FORMAT
+                                        and ('validation' in resource)):
+                                    validation, errors = validate_xml(
+                                        resource['validation'],
+                                        resource['url']
+                                    )
+                                elif (resource['format'].lower() in CSV_FORMAT
+                                        and ('validation' in resource)):
+                                    validation, errors = validate_csv(
+                                        resource['validation'],
+                                        resource['url'])
                                 resource['validated'] = validation
-                                resource['validation_time'] =
-                                str(datetime.now())
+                                resource['validation_time'] = str(
+                                    datetime.now()
+                                )
                                 if errors is not None:
                                     resource['validation_errors'] = str(errors)
                                 else:
