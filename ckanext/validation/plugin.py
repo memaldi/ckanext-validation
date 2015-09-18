@@ -77,8 +77,9 @@ class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def before_show(self, resource_dict):
         if 'validation_errors' in resource_dict:
             if resource_dict['validation_errors'] != "":
-                resource_dict['validation_errors_dict'] =
-                eval(resource_dict['validation_errors'])
+                resource_dict['validation_errors_dict'] = eval(
+                    resource_dict['validation_errors']
+                )
             else:
                 resource_dict['validation_errors_dict'] = None
 
