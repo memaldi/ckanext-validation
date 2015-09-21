@@ -114,11 +114,11 @@ def validate():
                 if 'resources' in package.json()['result']:
                     for resource in package.json()['result']['resources']:
                         # TODO: Check format!!!
-                        if ((resource['format'].lower() in JSON_FORMAT or
+                        if (((resource['format'].lower() in JSON_FORMAT or
                             resource['format'].lower() in XML_FORMAT or
-                            resource['format'].lower() in CSV_FORMAT or
-                            resource['format'].lower() in RDF_FORMAT) and
-                                resource.get('validation', '') != ''):
+                            resource['format'].lower() in CSV_FORMAT) and
+                            resource.get('validation', '') != '') or
+                                resource['format'].lower() in RDF_FORMAT):
                             last = None
                             last_validation = datetime(1970, 01, 01)
                             if resource.get('update_time', None) is None:
