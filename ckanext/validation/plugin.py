@@ -1,6 +1,9 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import datetime
+import logging
+
+log = logging.getLogger(__name__)
 
 
 class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
@@ -59,11 +62,12 @@ class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         return []
 
     def after_update(self, context, resource):
-        pass
+        return resource
 
     def before_update(self, context, current, resource):
         if 'for_edit' in context:
             resource['update_time'] = str(datetime.datetime.now())
+        return resource
 
     def before_show(self, resource_dict):
         if 'validation_errors' in resource_dict:
@@ -73,15 +77,17 @@ class ValidationPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
                 )
             else:
                 resource_dict['validation_errors_dict'] = None
+        return resource_dict
 
     def before_create(self, context, resource):
         resource['update_time'] = str(datetime.datetime.now())
+        return resource
 
     def after_create(self, context, resource):
-        pass
+        return resource
 
     def before_delete(self, context, resource, resources):
-        pass
+        return resource
 
     def after_delete(self, context, resources):
-        pass
+        return resources
