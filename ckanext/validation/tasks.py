@@ -86,7 +86,7 @@ def validate_rdf(url):
         return False, errors
 
 
-@periodic_task(run_every=timedelta(seconds=5))
+@periodic_task(run_every=timedelta(seconds=15))
 def validate():
     res = requests.get(
         API_URL + 'action/organization_list',
